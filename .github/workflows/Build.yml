@@ -96,7 +96,7 @@ jobs:
                 "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleProxy/AppleProxy.list"
                 "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppStore/AppStore.list"
             )
-            > Tool-repo/Ruleset/AI.list
+            > Tool-repo/Ruleset/AppleProxy.list
             for url in "${urls[@]}"; do
                 echo "Downloading: $url"
                 curl -f -L "$url" >> Tool-repo/Ruleset/AppleProxy.list || { echo "Download Failed: $url"; exit 1; }
