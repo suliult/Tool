@@ -110,7 +110,7 @@ jobs:
             > Tool-repo/Ruleset/AppleCN.list
             for url in "${urls[@]}"; do
                 echo "Downloading: $url"
-                curl -f -L -H "Accept-Language: en-us" "$url" >> Tool-repo/Ruleset/AppleProxy.list || { echo "Download Failed: $url"; exit 1; }
+                curl -f -L -H "Accept-Language: en-us" "$url" >> Tool-repo/Ruleset/AppleCN.list || { echo "Download Failed: $url"; exit 1; }
                 echo "" >> Tool-repo/Ruleset/AppleCN.list
             done
             # 下载规则
