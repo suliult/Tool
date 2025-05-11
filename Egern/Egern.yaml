@@ -6,7 +6,7 @@
 #
 # Egern Version ≥ v2.0.0(552)
 #
-# 最后更新时间: 2025-05-11 22:30
+# 最后更新时间: 2025-05-11 23:30
 #
 # ================
 
@@ -15,8 +15,10 @@ vif_only: true
 # 劫持 DNS 服务器
 hijack_dns:
 - '*:53'
-# 自定义MaxMind数据库
+# 自定义 MaxMind 数据库
 geoip_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
+# 自定义 ASN 数据库
+asn_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-ASN.mmdb
 # 代理延迟测试
 proxy_latency_test_url: http://1.1.1.1/generate_204
 # 直连延迟测试
