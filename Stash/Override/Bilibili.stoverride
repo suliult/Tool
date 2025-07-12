@@ -2,7 +2,7 @@ name: Bilibili增强
 desc: |-
   拜托，没有广告的哔哩哔哩真的超酷的
   作者: @kokoryh @Script-Hub
-  最后更新时间: 2025-07-12 22:00
+  最后更新时间: 2025-07-12 22:05
 icon: https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Bilibili.png
 category: ⚙️ ▸ NoAds
 arguments-desc: |-
@@ -50,3 +50,80 @@ http:
       timeout: 60
       argument: |-
         text=%7B%22code%22%3A0%2C%22data%22%3A%7B%22closeType%22%3A%22close_win%22%2C%22container%22%3A%5B%5D%2C%22showTime%22%3A%22%22%7D%2C%22message%22%3A%22success%22%7D
+
+    - match: ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus$
+      name: "echoResponse"
+      type: request
+      timeout: 60
+      argument: |-
+        base64=AAAAABMKEQgCEgl0ZWVuYWdlcnMgAioA
+
+    - match: ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords$
+      name: "echoResponse"
+      type: request
+      timeout: 60
+      argument: |-
+        base64=AAAAACkaHeaQnOe0ouinhumikeOAgeeVquWJp%2BaIlnVw5Li7IgAoAToAQgBKAA%3D%3D
+
+    - match: ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.view\.v1\.View\/TFInfo$
+      name: "echoResponse"
+      type: request
+      timeout: 60
+      argument: |-
+        base64=AAAAAAIIAQ%3D%3D
+
+    - match: ^https:\/\/line3-h5-mobile-api\.biligame\.com\/game\/live\/large_card_material\?
+      name: "echoResponse"
+      type: request
+      timeout: 60
+      argument: |-
+        text=%7B%22code%22%3A0%2C%22message%22%3A%22success%22%7D
+
+    - match: ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.community\.service\.dm\.v1\.DM\/DmSegMobile$
+      name: "bilibili.airborne_24"
+      type: request
+      require-body: true
+      max-size: -1
+      binary-mode: true
+      argument: |-
+        {"logLevel":"info"}
+
+    - match: ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\?
+      name: "bilibili.skin_25"
+      type: response
+      require-body: true
+      max-size: -1
+
+    - match: ^https:\/\/app\.bilibili\.com\/x\/(resource\/show\/tab\/v2|v2\/(splash\/(list|show|event\/list2)|feed\/index(\/story)?|account\/(mine(\/ipad)?|myinfo)))\?
+      name: "bilibili.json_26"
+      type: response
+      require-body: true
+      max-size: -1
+      argument: |-
+        {"showCreatorHub":0}
+
+    - match: ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.(app\.(show\.v1\.Popular\/Index|dynamic\.v2\.Dynamic\/DynAll|view(unite)?\.v1\.View\/(View|ViewProgress|RelatesFeed)|playurl\.v1\.PlayURL\/PlayView|playerunite\.v1\.Player\/PlayViewUnite)|polymer\.app\.search\.v1\.Search\/SearchAll|community\.service\.dm\.v1\.DM\/(DmView|DmSegMobile)|main\.community\.reply\.v1\.Reply\/MainList|pgc\.gateway\.player\.v2\.PlayURL\/PlayView)$
+      name: "bilibili.protobuf_27"
+      type: response
+      require-body: true
+      max-size: -1
+      binary-mode: true
+      argument: |-
+        {"showUpList":"auto","filterTopReplies":1,"airborne":"bilibili.airborne","logLevel":"info"}
+
+script-providers:
+  "echoResponse":
+    url: https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/echo-response.js
+    interval: 86400
+  "bilibili.airborne_24":
+    url: https://raw.githubusercontent.com/kokoryh/Sparkle/refs/heads/master/dist/bilibili.airborne.js
+    interval: 86400
+  "bilibili.skin_25":
+    url: https://raw.githubusercontent.com/kokoryh/Script/master/js/bili-suit-diy.js
+    interval: 86400
+  "bilibili.json_26":
+    url: https://raw.githubusercontent.com/kokoryh/Sparkle/refs/heads/master/dist/bilibili.json.js
+    interval: 86400
+  "bilibili.protobuf_27":
+    url: https://raw.githubusercontent.com/kokoryh/Sparkle/refs/heads/master/dist/bilibili.protobuf.js
+    interval: 86400
